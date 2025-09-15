@@ -64,11 +64,17 @@ public final class DuelPlugin extends JavaPlugin implements Listener {
     // 서버 스폰 좌표 고정
     private static final Location SERVER_SPAWN = new Location(Bukkit.getWorlds().get(0), 2, -60, -8);
 
-    @Override
-    public void onEnable() {
-        getServer().getPluginManager().registerEvents(this, this);
-        getLogger().info("DuelPlugin Enabled!");
-    }
+   @Override
+public void onEnable() {
+    getServer().getPluginManager().registerEvents(this, this);
+    getServer().getPluginManager().registerEvents(new HorseHealListener(this), this);
+    getLogger().info("DuelPlugin Enabled!");
+}
+
+// 다른 클래스에서 activeDuels에 접근 가능하게 getter 추가
+public Map<UUID, Duel> getActiveDuels() {
+    return activeDuels;
+}
 
     /* =========================
            입력 감지 (Shift+F)
