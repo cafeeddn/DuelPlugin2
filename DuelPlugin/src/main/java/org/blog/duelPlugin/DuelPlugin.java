@@ -67,7 +67,7 @@ public final class DuelPlugin extends JavaPlugin implements Listener {
    @Override
 public void onEnable() {
     getServer().getPluginManager().registerEvents(this, this);
-    getServer().getPluginManager().registerEvents(new HorseHealListener(this), this);
+    getServer().getPluginManager().registerEvents(new HorseHeal(this), this);
     getLogger().info("DuelPlugin Enabled!");
 }
 
